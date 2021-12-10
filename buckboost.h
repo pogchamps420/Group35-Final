@@ -6,6 +6,7 @@
 #include <string>
 #include "variables.h"
 #include "menu.h"
+#include "System.h"
 #include <algorithm>
 #include <cassert>
 #include <cctype>

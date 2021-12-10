@@ -1,5 +1,4 @@
 #include "buckboost.h"
-#include "variables.h"
 
 /* Non - linear variables relating to buck / boost converters are the inductor voltage,
 *  inductor selection, capacitor selection, peak to peak output voltage ripple and change in charge
@@ -8,8 +7,6 @@
 //bool is_number(const std::string& word) {
 //    return !word.empty() && std::all_of(word.begin(), word.end(), ::isdigit);
 //}
-
-
 
 namespace bbc {
     BUCKBOOST::BUCKBOOST() {}
@@ -99,6 +96,7 @@ namespace bbc {
     void BUCKBOOST::BuckBoostConverters(CONVERTERS BBCStuff, BUCK BuckStuff, BOOST BoostStuff, Menu BBCMenu)
     {
         if (ExitMenu) { return; }
+        System::Clear();
         BBCMenu = UpdateBBCValues(BBCStuff, BBCMenu);
         BBCMenu.PrintMenu();
 
@@ -199,6 +197,7 @@ namespace bbc {
     void BUCKBOOST::VOLT_INDUCT(CONVERTERS BBCStuff, BUCK BuckStuff, BOOST BoostStuff, Menu& BBCMenu)
     {
         if (ExitMenu) { return; }
+        System::Clear();
         BBCMenu = UpdateBBCValues(BBCStuff, BBCMenu);
         std::vector<MenuOption> MenuOptions
         {
@@ -297,6 +296,7 @@ namespace bbc {
     void BUCKBOOST::SEL_INDUCT(CONVERTERS BBCStuff, BUCK BuckStuff, BOOST BoostStuff, Menu& BBCMenu)
     {
         if (ExitMenu) { return; }
+        System::Clear();
         BBCMenu = UpdateBBCValues(BBCStuff, BBCMenu);
         //BuckMenu = UpdateBBCValues(BuckStuff, BuckMenu);
         //BoostMenu = UpdateBBCValues(BoostStuff, BoostMenu);
@@ -406,6 +406,7 @@ namespace bbc {
     void BUCKBOOST::SEL_CAP(CONVERTERS BBCStuff, BUCK BuckStuff, BOOST BoostStuff, Menu& BBCMenu)
     {
         if (ExitMenu) { return; }
+        System::Clear();
         BBCMenu = UpdateBBCValues(BBCStuff, BBCMenu);
         //BuckMenu = UpdateBBCValues(BuckStuff, BuckMenu);
         //BoostMenu = UpdateBBCValues(BoostStuff, BoostMenu);
