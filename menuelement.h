@@ -27,9 +27,9 @@ public:
 	MenuItem();
 	MenuItem(char identifier, std::string description);
 	MenuItem(char identifier, std::string description, double value);
-	MenuItem(char identifier, std::string description, std::vector <int> vecvalue);
+	//MenuItem(char identifier, std::string description, std::vector <int> vecvalue);
 
-	void ChangeValueVec(std::vector <int> newVec);
+	//void ChangeValueVec(std::vector <int> newVec);
 	void ChangeValue(std::string newValue);
 	void ChangeValue(double newValue);
 	float GetValue();

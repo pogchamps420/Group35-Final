@@ -51,7 +51,7 @@ int main()
             break;
 
 		case 'D':
-			BMenu.InitMenu();
+			BMenu.InitMenu(0);
 			break;
         
         case 'R':

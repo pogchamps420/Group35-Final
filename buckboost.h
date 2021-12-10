@@ -22,7 +22,7 @@ namespace bbc
     public:
         BUCKBOOST();
 
-        void InitMenu();
+        void InitMenu(bool ExitMenu);
         void BuckBoostConverters(CONVERTERS BBCStuff, BUCK BuckStuff, BOOST BoostStuff, Menu BBCMenu);
         Menu ChangeValues(CONVERTERS BBCStuff, BUCK Buck, BOOST Boost, Menu BBCMenu);
         Menu UpdateBBCValues(CONVERTERS BBCStuff, Menu BBCMenu);
@@ -33,6 +33,7 @@ namespace bbc
         void SEL_CAP(CONVERTERS BBCStuff, BUCK BuckStuff, BOOST BoostStuff, Menu& BBCMenu);
 
     private:
+		bool ExitMenu;
     };
 }
 #endif

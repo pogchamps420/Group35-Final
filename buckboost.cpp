@@ -14,8 +14,11 @@
 namespace bbc {
     BUCKBOOST::BUCKBOOST() {}
 
-    void BUCKBOOST::InitMenu()
+    void BUCKBOOST::InitMenu(bool _ExitMenu)
     {
+		_ExitMenu = ExitMenu;
+        if (ExitMenu) { return; }
+        System::Clear();
         //std::cout << "poggers" << std::endl;
 
         std::vector<MenuOption> BMenuOptions
@@ -82,6 +85,7 @@ namespace bbc {
         case 'a':
             BuckBoostConverters(BBCStuff, BuckStuff, BoostStuff, BBCMenu);
         case 'x':
+			ExitMenu = 0;
             return;
             break;
         default:
@@ -94,6 +98,7 @@ namespace bbc {
 
     void BUCKBOOST::BuckBoostConverters(CONVERTERS BBCStuff, BUCK BuckStuff, BOOST BoostStuff, Menu BBCMenu)
     {
+        if (ExitMenu) { return; }
         BBCMenu = UpdateBBCValues(BBCStuff, BBCMenu);
         BBCMenu.PrintMenu();
 
@@ -102,15 +107,15 @@ namespace bbc {
         {
         case 'a':
             VOLT_INDUCT(BBCStuff, BuckStuff, BoostStuff, BBCMenu);
-            BuckBoostConverters(BBCStuff, BuckStuff, BoostStuff, BBCMenu);
+            //BuckBoostConverters(BBCStuff, BuckStuff, BoostStuff, BBCMenu);
             break;
         case 'b':
             SEL_INDUCT(BBCStuff, BuckStuff, BoostStuff, BBCMenu);
-            BuckBoostConverters(BBCStuff, BuckStuff, BoostStuff, BBCMenu);
+            //BuckBoostConverters(BBCStuff, BuckStuff, BoostStuff, BBCMenu);
             break;
         case 'c':
             SEL_CAP(BBCStuff, BuckStuff, BoostStuff, BBCMenu);
-            BuckBoostConverters(BBCStuff, BuckStuff, BoostStuff, BBCMenu);
+            //BuckBoostConverters(BBCStuff, BuckStuff, BoostStuff, BBCMenu);
             break;
         case 'd':
             BBCMenu = ChangeValues(BBCStuff, BuckStuff, BoostStuff, BBCMenu);
@@ -144,18 +149,6 @@ namespace bbc {
         BuckBoostConverters(BuckBoost, Buck, Boost, BBCMenu);
         return BBCMenu;
     }
-
-    /*void BUCKBOOST::ChangeValues(Menu* menu)
-    {
-        std::cout << "\nEnter the number of the value you want to add/change: ";
-        char option;
-        std::cin >> option;
-        std::cout << "\nEnter the value you want to use: ";
-        double value;
-        std::cin >> value;
-        menu->ChangeItemValue(option, value);
-    }*/
-
 
     Menu BUCKBOOST::UpdateBBCValues(CONVERTERS BuckBoost, Menu BBCMenu)
     {
@@ -205,6 +198,7 @@ namespace bbc {
 
     void BUCKBOOST::VOLT_INDUCT(CONVERTERS BBCStuff, BUCK BuckStuff, BOOST BoostStuff, Menu& BBCMenu)
     {
+        if (ExitMenu) { return; }
         BBCMenu = UpdateBBCValues(BBCStuff, BBCMenu);
         std::vector<MenuOption> MenuOptions
         {
@@ -288,8 +282,8 @@ namespace bbc {
                  //td::cout << i << "\n";
                 //
                 // Delta_i = BBCMenu.GetItemValue('m');
-                Menu.ChangeItemValueVec('c', Delta_i);
-                BBCMenu.ChangeItemValueVec('m', Delta_i);
+                //Menu.ChangeItemValueVec('c', Delta_i);
+                //BBCMenu.ChangeItemValueVec('m', Delta_i);
                 break;
             case 'x':
                 loop = 0;
@@ -302,6 +296,7 @@ namespace bbc {
 
     void BUCKBOOST::SEL_INDUCT(CONVERTERS BBCStuff, BUCK BuckStuff, BOOST BoostStuff, Menu& BBCMenu)
     {
+        if (ExitMenu) { return; }
         BBCMenu = UpdateBBCValues(BBCStuff, BBCMenu);
         //BuckMenu = UpdateBBCValues(BuckStuff, BuckMenu);
         //BoostMenu = UpdateBBCValues(BoostStuff, BoostMenu);
@@ -375,8 +370,8 @@ namespace bbc {
                     std::cout << i << "\n";
                 }
                 // Delta_i = BBCMenu.GetItemValue('m');
-                Menu.ChangeItemValueVec('b', Delta_i);
-                BBCMenu.ChangeItemValueVec('m', Delta_i);
+                //Menu.ChangeItemValueVec('b', Delta_i);
+                //BBCMenu.ChangeItemValueVec('m', Delta_i);
                 break;
             }
             case 'e':
@@ -410,6 +405,7 @@ namespace bbc {
 
     void BUCKBOOST::SEL_CAP(CONVERTERS BBCStuff, BUCK BuckStuff, BOOST BoostStuff, Menu& BBCMenu)
     {
+        if (ExitMenu) { return; }
         BBCMenu = UpdateBBCValues(BBCStuff, BBCMenu);
         //BuckMenu = UpdateBBCValues(BuckStuff, BuckMenu);
         //BoostMenu = UpdateBBCValues(BoostStuff, BoostMenu);
@@ -484,8 +480,8 @@ namespace bbc {
                //     std::cout << i << "\n";
                // }
                 // Delta_i = BBCMenu.GetItemValue('m');
-                Menu.ChangeItemValueVec('d', Delta_vo);
-                BBCMenu.ChangeItemValueVec('j', Delta_vo);
+                //Menu.ChangeItemValueVec('d', Delta_vo);
+                //BBCMenu.ChangeItemValueVec('j', Delta_vo);
                 break;
             case 'e':
                 std::cout << "Output Voltage: ";
