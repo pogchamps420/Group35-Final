@@ -22,8 +22,8 @@ int main()
     while (std::cin.get() != '\n');
 
     //Display menu
-
-    while (true)
+	bool loop = 1;
+    while (loop)
     {
         System::Clear();
 
@@ -59,18 +59,10 @@ int main()
             break;
         
         case 'x':
-            goto break_main_while;
+            loop = 0;
             break;
         }
     }
-break_main_while:;
-
-
-    
-
-    
-    
-
     //outro sequence
     std::cout << "\n\nThank you for using our Sandbox\n\tProject by Tise Olayinka, Delilah Hague, Rafal Kalisz\nGroup 35\tELEC2645" << std::endl;
     System::Sleep(1);
